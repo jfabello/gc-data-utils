@@ -34,6 +34,7 @@ The Genesys Cloud Data Utilities for Node.js is an easy-to-use toolbox to extrac
     - [`getConversationsDetailsFromDatalake()`](#getconversationsdetailsfromdatalake)
     - [`getUsersDetailsFromDatalake()`](#getusersdetailsfromdatalake)
     - [`getEventsFromAuditLog()`](#geteventsfromauditlog)
+    - [`on()`](#on)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
