@@ -615,7 +615,7 @@ class ERROR_GC_DATA_UTILS_ENTITY_TYPE_TYPE_INVALID extends TypeError {
 class ERROR_GC_DATA_UTILS_AUDIT_LOG_QUERY_FAILED extends Error {
 	/**
 	 * @constructor
-	 * @param {id} queryId - The query ID.
+	 * @param {string} queryId - The query ID.
 	 * @param {object} returnedQueryStatus - The returned query status.
 	 */
 	constructor(queryId, returnedQueryStatus) {
@@ -634,7 +634,7 @@ class ERROR_GC_DATA_UTILS_AUDIT_LOG_QUERY_FAILED extends Error {
 class ERROR_GC_DATA_UTILS_AUDIT_LOG_QUERY_CANCELLED extends Error {
 	/**
 	 * @constructor
-	 * @param {id} queryId - The query ID.
+	 * @param {string} queryId - The query ID.
 	 * @param {object} returnedQueryStatus - The returned query status.
 	 */
 	constructor(queryId, returnedQueryStatus) {
