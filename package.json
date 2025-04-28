@@ -1,0 +1,42 @@
+{
+	"name": "@jfabello/gc-data-utils",
+	"version": "0.1.0",
+	"description": "Genesys Cloud data utilities for Node.js.",
+	"keywords": [
+		"genesys",
+		"cloud",
+		"data",
+		"utilities",
+		"platform",
+		"api",
+		"node"
+	],
+	"license": "MIT",
+	"author": {
+		"name": "Juan F. Abello",
+		"email": "juan@jfabello.com"
+	},
+	"type": "module",
+	"main": "src/gc-data-utils-class.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jfabello/gc-data-utils.git"
+	},
+	"scripts": {
+		"test": "node --experimental-vm-modules ./node_modules/.bin/jest --watchAll --coverage"
+	},
+	"dependencies": {
+		"@jfabello/gc-platform-api-client": "^0.1.0",
+		"@jfabello/simple-timer": "^3.0.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.0.0",
+		"@jest/globals": "^29.0.0",
+		"eslint": "^9.0.0",
+		"globals": "^16.0.0",
+		"jest": "^29.0.0"
+	},
+	"engines": {
+		"node": ">=20"
+	}
+}
