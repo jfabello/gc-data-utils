@@ -467,7 +467,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		expect.assertions(1);
 		const gcDataUtils = new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION);
 		try {
-			/* eslint-disable-next-line no-unused-vars, no-empty */
+			// eslint-disable-next-line no-unused-vars, no-empty
 			for await (const dummy of gcDataUtils.getAllUsers()) {
 			}
 		} catch (error) {
@@ -479,28 +479,31 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		const gcDataUtils = new GCDataUtils(realClientId, realClientSecret, realRegion);
 		await gcDataUtils.connect();
 		try {
-			/* eslint-disable-next-line no-unused-vars, no-empty */
+			// @ts-expect-error
+			// eslint-disable-next-line no-unused-vars, no-empty
 			for await (const dummy of gcDataUtils.getAllUsers({ pageSize: "1234" })) {
 			}
 		} catch (error) {
 			expect(error).toBeInstanceOf(GCDataUtils.errors.ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID);
 		}
 		try {
-			/* eslint-disable-next-line no-unused-vars, no-empty */
+			// @ts-expect-error
+			// eslint-disable-next-line no-unused-vars, no-empty
 			for await (const dummy of gcDataUtils.getAllUsers({ pageSize: false })) {
 			}
 		} catch (error) {
 			expect(error).toBeInstanceOf(GCDataUtils.errors.ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID);
 		}
 		try {
-			/* eslint-disable-next-line no-unused-vars, no-empty */
+			// @ts-expect-error
+			// eslint-disable-next-line no-unused-vars, no-empty
 			for await (const dummy of gcDataUtils.getAllUsers({ pageSize: { timeout: 1234 } })) {
 			}
 		} catch (error) {
 			expect(error).toBeInstanceOf(GCDataUtils.errors.ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID);
 		}
 		try {
-			/* eslint-disable-next-line no-unused-vars, no-empty */
+			// eslint-disable-next-line no-unused-vars, no-empty
 			for await (const dummy of gcDataUtils.getAllUsers({ pageSize: 1234.56 })) {
 			}
 		} catch (error) {
