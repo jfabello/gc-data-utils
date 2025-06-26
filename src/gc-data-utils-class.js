@@ -288,7 +288,7 @@ class GCDataUtils {
 	 * @async
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=100] - The number of users to return per page.
-	 * @returns {AsyncGenerator} An async generator that yields the users.
+	 * @returns {AsyncGenerator<object>} An async generator that yields the users.
 	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID} If the page size option is not a number.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS} If the page size option is not a positive integer.
@@ -332,7 +332,7 @@ class GCDataUtils {
 	 * @async
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=100] - The number of queues to return per page.
-	 * @returns {AsyncGenerator} An async generator that yields the queues.
+	 * @returns {AsyncGenerator<object>} An async generator that yields the queues.
 	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID} If the page size option is not a number.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS} If the page size option is not a positive integer.
@@ -377,7 +377,7 @@ class GCDataUtils {
 	 * @param {string} queueId - The ID of the queue.
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=100] - The number of members to return per page.
-	 * @returns {AsyncGenerator} An async generator that yields the members of the queue.
+	 * @returns {AsyncGenerator<object>} An async generator that yields the members of the queue.
 	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_QUEUE_ID_TYPE_INVALID} If the queue ID argument is not a string.
 	 * @throws {ERROR_GC_DATA_UTILS_QUEUE_ID_INVALID_UUID} If the queue ID argument is not a valid UUID.
@@ -528,7 +528,7 @@ class GCDataUtils {
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=2000] - The number of conversations details to fetch per page.
 	 * @param {number} [options.daysPerJob=30] - The number of days to fetch per job.
-	 * @returns {AsyncGenerator} An async generator that yields the conversations.
+	 * @returns {AsyncGenerator<object>} An async generator that yields the conversations.
 	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_START_TIMESTAMP_TYPE_INVALID} If the start timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_END_TIMESTAMP_TYPE_INVALID} If the end timestamp argument is not a Date object.
@@ -668,7 +668,7 @@ class GCDataUtils {
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=2000] - The number of users details to fetch per page.
 	 * @param {number} [options.daysPerJob=30] - The number of days to fetch per job.
-	 * @returns {AsyncGenerator} An async generator that yields the users.
+	 * @returns {AsyncGenerator<object>} An async generator that yields the users.
 	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_START_TIMESTAMP_TYPE_INVALID} If the start timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_END_TIMESTAMP_TYPE_INVALID} If the end timestamp argument is not a Date object.
@@ -809,7 +809,7 @@ class GCDataUtils {
 	 * @param {object} options - The options object.
 	 * @param {string} [options.entityType] - The type of entity to fetch events for. If not provided, all entity types for the service will be fetched.
 	 * @param {number} [options.pageSize=500] - The number of audit log events to fetch per page.
-	 * @returns {AsyncGenerator} An async generator that yields the queue events.
+	 * @returns {AsyncGenerator<object>} An async generator that yields the queue events.
 	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_START_TIMESTAMP_TYPE_INVALID} If the start timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_END_TIMESTAMP_TYPE_INVALID} If the end timestamp argument is not a Date object.
