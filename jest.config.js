@@ -1,5 +1,4 @@
 export default {
-	coveragePathIgnorePatterns: [
-	  '/node_modules/'
-	]
-  };
+	coveragePathIgnorePatterns: ["/node_modules/"],
+	watchPathIgnorePatterns: ["/node_modules/"]
+};
