@@ -1,5 +1,5 @@
 /**
- * Genesys Cloud data utilities for Node.js constants.
+ * Genesys Cloud Data Utilities for Node.js constants.
  * @module gc-data-utils-constants
  * @license MIT
  * @author Juan F. Abello <juan@jfabello.com>

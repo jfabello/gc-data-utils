@@ -149,7 +149,7 @@ CLOSING --> FAILED : close() rejects
 - `CLOSING`: A symbol that represents the CLOSING state of the client.
 - `CLOSED`: A symbol that represents the CLOSED state of the client.
 - `FAILED`: A symbol that represents the FAILED state of the client.
-- `errors`: An object that contains the Genesys Cloud data utilities error classes as properties.
+- `errors`: An object that contains the Genesys Cloud Data Utilities error classes as properties.
 
 ### Instance Properties
 
@@ -159,7 +159,7 @@ CLOSING --> FAILED : close() rejects
 
 #### `constructor()`
 
-Creates a new instance of the Genesys Cloud data utilities client.
+Creates a new instance of the Genesys Cloud Data Utilities client.
 
 ##### Parameters
 
@@ -188,7 +188,7 @@ Creates a new instance of the Genesys Cloud data utilities client.
 
 #### `connect()`
 
-Connects the Genesys Cloud data utilities client.
+Connects the Genesys Cloud Data Utilities client.
 
 ##### Returns
 
@@ -205,7 +205,7 @@ A promise that fulfills to `true` if the client connects successfully.
 
 #### `close()`
 
-Closes the Genesys Cloud data utilities client connection.
+Closes the Genesys Cloud Data Utilities client connection.
 
 ##### Parameters
 

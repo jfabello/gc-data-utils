@@ -1,5 +1,5 @@
 /**
- * Genesys Cloud data utilities for Node.js errors.
+ * Genesys Cloud Data Utilities for Node.js errors.
  * @module gc-data-utils-errors
  * @license MIT
  * @author Juan F. Abello <juan@jfabello.com>
@@ -9,7 +9,7 @@
 "use strict";
 
 /**
- * Thrown when an internal Genesys Cloud data utilities error has occurred.
+ * Thrown when an internal Genesys Cloud Data Utilities error has occurred.
  * @class ERROR_GC_DATA_UTILS_INTERNAL_ERROR
  * @extends Error
  */
@@ -20,7 +20,7 @@ class ERROR_GC_DATA_UTILS_INTERNAL_ERROR extends Error {
 	 * @param {Error} [extendedError] - The extended error object.
 	 */
 	constructor(extendedMessage, extendedError) {
-		super("An internal Genesys Cloud data utilities error has occurred.");
+		super("An internal Genesys Cloud Data Utilities error has occurred.");
 		this.name = Object.getPrototypeOf(this).constructor.name;
 		if (typeof extendedMessage === "string") this.extendedMessage = extendedMessage;
 		if (typeof extendedError === "object" && extendedError instanceof Error) this.extendedError = extendedError;
@@ -194,7 +194,7 @@ class ERROR_GC_DATA_UTILS_MAX_RETRIES_OUT_OF_BOUNDS extends RangeError {
 }
 
 /**
- * Thrown when the Genesys Cloud data utilities client is not in a state that allows its initialization.
+ * Thrown when the Genesys Cloud Data Utilities client is not in a state that allows its initialization.
  * @class ERROR_GC_DATA_UTILS_CONNECT_UNAVAILABLE
  * @extends Error
  */
@@ -203,7 +203,7 @@ class ERROR_GC_DATA_UTILS_CONNECT_UNAVAILABLE extends Error {
 	 * @constructor
 	 */
 	constructor() {
-		super(`The Genesys Cloud data utilities client is not in a state that allows its initialization.`);
+		super(`The Genesys Cloud Data Utilities client is not in a state that allows its initialization.`);
 		this.name = Object.getPrototypeOf(this).constructor.name;
 	}
 }
@@ -290,7 +290,7 @@ class ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE extends Error {
 }
 
 /**
- * Thrown when the Genesys Cloud data utilities is not in a state that allows its closing.
+ * Thrown when the Genesys Cloud Data Utilities is not in a state that allows its closing.
  * @class ERROR_GC_DATA_UTILS_CLOSE_UNAVAILABLE
  * @extends Error
  */
@@ -299,13 +299,13 @@ class ERROR_GC_DATA_UTILS_CLOSE_UNAVAILABLE extends Error {
 	 * @constructor
 	 */
 	constructor() {
-		super("The Genesys Cloud data utilities is not in a state that allows its closing.");
+		super("The Genesys Cloud Data Utilities is not in a state that allows its closing.");
 		this.name = Object.getPrototypeOf(this).constructor.name;
 	}
 }
 
 /**
- * Thrown when the Genesys Cloud data utilities client is not connected.
+ * Thrown when the Genesys Cloud Data Utilities client is not connected.
  * @class ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED
  * @extends Error
  */
@@ -314,7 +314,7 @@ class ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED extends Error {
 	 * @constructor
 	 */
 	constructor() {
-		super("The Genesys Cloud data utilities client is not connected.");
+		super("The Genesys Cloud Data Utilities client is not connected.");
 		this.name = Object.getPrototypeOf(this).constructor.name;
 	}
 }

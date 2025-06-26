@@ -1,5 +1,5 @@
 /**
- * Genesys Cloud data utilities for Node.js regexes.
+ * Genesys Cloud Data Utilities for Node.js regexes.
  * @module gc-data-utils-regexes
  * @license MIT
  * @author Juan F. Abello <juan@jfabello.com>

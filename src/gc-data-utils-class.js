@@ -1,5 +1,5 @@
 /**
- * Genesys Cloud data utilities for Node.js class.
+ * Genesys Cloud Data Utilities for Node.js class.
  * @module jfabello/gc-data-utils-class
  * @license MIT
  * @author Juan F. Abello <juan@jfabello.com>
@@ -26,7 +26,7 @@ import { errors } from "./gc-data-utils-errors.js";
 import { regexes } from "./gc-data-utils-regexes.js";
 
 /**
- * Genesys Cloud data utilities class.
+ * Genesys Cloud Data Utilities class.
  * @class GCDataUtils
  */
 class GCDataUtils {
@@ -107,7 +107,7 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Read-only property that contains the Genesys Cloud data utilities error classes as properties.
+	 * Read-only property that contains the Genesys Cloud Data Utilities error classes as properties.
 	 * @static
 	 * @readonly
 	 * @type {object}
@@ -117,7 +117,7 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Read-only property that returns the state of the Genesys Cloud data utilities client.
+	 * Read-only property that returns the state of the Genesys Cloud Data Utilities client.
 	 * @readonly
 	 * @type {symbol}
 	 */
@@ -135,12 +135,12 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Creates a new Genesys Cloud data utilities instance.
+	 * Creates a new Genesys Cloud Data Utilities instance.
 	 * @constructor
 	 * @param {string} gcClientId - The Genesys Cloud OAuth client ID. Must be a valid UUID.
 	 * @param {string} gcClientSecret - The Genesys Cloud OAuth client ID secret.
 	 * @param {string} gcRegion - The Genesys Cloud region. For example: us-east-1, ca-central-1, ap-south-1, etc.
-	 * @param {object} options - The Genesys Cloud data utilities options object.
+	 * @param {object} options - The Genesys Cloud Data Utilities options object.
 	 * @param {number} [options.socketTimeout=60000] - The HTTP socket timeout in milliseconds.
 	 * @param {number} [options.timeBetweenRequests=200] - The time in milliseconds between each call to the Genesys Cloud platform API.
 	 * @param {number} [options.maxRetries=5] - The maximum number of retries for retryable Genesys Cloud platform API errors.
@@ -216,7 +216,7 @@ class GCDataUtils {
 			throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.message, error);
 		}
 
-		// Create the Genesys Cloud data utilties event emitter
+		// Create the Genesys Cloud Data Utilities event emitter
 		this.#internalEventEmitter = new EventEmitter();
 
 		// Set the client state to CREATED
@@ -224,7 +224,7 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Connects the Genesys Cloud data utilities client.
+	 * Connects the Genesys Cloud Data Utilities client.
 	 * @async
 	 * @returns {Promise<boolean>} A promise that fulfills to true if the client connected.
 	 * @throws {ERROR_GC_DATA_UTILS_CONNECT_UNAVAILABLE} If the client is not in a state that allows it to connect to Genesys Cloud.
@@ -236,7 +236,7 @@ class GCDataUtils {
 	 * @throws Errors thrown by the makeRequest() method of the HTTP client class.
 	 */
 	connect() {
-		// Return the Genesys Cloud data utilities connect promise object if the client state is already CONNECTING
+		// Return the Genesys Cloud Data Utilities connect promise object if the client state is already CONNECTING
 		if (this.#clientState === GCDataUtils.#CONNECTING) {
 			return this.#connectPromise;
 		}
@@ -255,7 +255,7 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Closes the Genesys Cloud data utilities client connection.
+	 * Closes the Genesys Cloud Data Utilities client connection.
 	 * @async
 	 * @returns {Promise<boolean>} A promise that fulfills to true if the client is gracefully disconnected.
 	 * @throws {ERROR_GC_DATA_UTILS_CLOSE_UNAVAILABLE} If the client is not in a state that allows its closing.
@@ -265,7 +265,7 @@ class GCDataUtils {
 	 * @throws Errors thrown by the makeRequest() method of the HTTP client class.
 	 */
 	close() {
-		// Return the Genesys Cloud data utilities client close promise object if the client state is already CLOSING or CLOSED
+		// Return the Genesys Cloud Data Utilities client close promise object if the client state is already CLOSING or CLOSED
 		if (this.#clientState === GCDataUtils.#CLOSING || this.#clientState === GCDataUtils.#CLOSED) {
 			return this.#closePromise;
 		}
@@ -289,7 +289,7 @@ class GCDataUtils {
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=100] - The number of users to return per page.
 	 * @returns {AsyncGenerator} An async generator that yields the users.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID} If the page size option is not a number.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS} If the page size option is not a positive integer.
 	 * @throws {ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE} If the response is missing a required property or there is a property type mismatch.
@@ -333,7 +333,7 @@ class GCDataUtils {
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=100] - The number of queues to return per page.
 	 * @returns {AsyncGenerator} An async generator that yields the queues.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID} If the page size option is not a number.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS} If the page size option is not a positive integer.
 	 * @throws {ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE} If the response is missing a required property or there is a property type mismatch.
@@ -378,7 +378,7 @@ class GCDataUtils {
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=100] - The number of members to return per page.
 	 * @returns {AsyncGenerator} An async generator that yields the members of the queue.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_QUEUE_ID_TYPE_INVALID} If the queue ID argument is not a string.
 	 * @throws {ERROR_GC_DATA_UTILS_QUEUE_ID_INVALID_UUID} If the queue ID argument is not a valid UUID.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID} If the page size option is not a number.
@@ -430,7 +430,7 @@ class GCDataUtils {
 	 * Get the conversations datalake availability timestamp.
 	 * @async
 	 * @returns {Promise<Date>} A promise that fulfills to the conversations datalake availability timestamp.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE} If the response is missing a required property or there is a property type mismatch.
 	 */
 	async getConversationsDatalakeAvailabilityTimestamp() {
@@ -452,7 +452,7 @@ class GCDataUtils {
 	 * Get the users datalake availability timestamp.
 	 * @async
 	 * @returns {Promise<Date>} A promise that fulfills to the users datalake availability timestamp.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 */
 	async getUsersDatalakeAvailabilityTimestamp() {
 		// Check the client state
@@ -475,7 +475,7 @@ class GCDataUtils {
 	 * @returns {Promise<Date>} A promise that fulfills to the oldest queue creation timestamp.
 	 * @param {object} options - The options object.
 	 * @param {number} [options.pageSize=100] - The number of queues to fetch per page.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID} If the page size option is not a number.
 	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS} If the page size option is not a positive integer.
 	 * @throws {ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE} If the response is missing a required property or there is a property type mismatch.
@@ -529,7 +529,7 @@ class GCDataUtils {
 	 * @param {number} [options.pageSize=2000] - The number of conversations details to fetch per page.
 	 * @param {number} [options.daysPerJob=30] - The number of days to fetch per job.
 	 * @returns {AsyncGenerator} An async generator that yields the conversations.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_START_TIMESTAMP_TYPE_INVALID} If the start timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_END_TIMESTAMP_TYPE_INVALID} If the end timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_INTERVAL_MISMATCH} If the start timestamp is not earlier than the end timestamp.
@@ -669,7 +669,7 @@ class GCDataUtils {
 	 * @param {number} [options.pageSize=2000] - The number of users details to fetch per page.
 	 * @param {number} [options.daysPerJob=30] - The number of days to fetch per job.
 	 * @returns {AsyncGenerator} An async generator that yields the users.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_START_TIMESTAMP_TYPE_INVALID} If the start timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_END_TIMESTAMP_TYPE_INVALID} If the end timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_INTERVAL_MISMATCH} If the start timestamp is not earlier than the end timestamp.
@@ -810,7 +810,7 @@ class GCDataUtils {
 	 * @param {string} [options.entityType] - The type of entity to fetch events for. If not provided, all entity types for the service will be fetched.
 	 * @param {number} [options.pageSize=500] - The number of audit log events to fetch per page.
 	 * @returns {AsyncGenerator} An async generator that yields the queue events.
-	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud data utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
 	 * @throws {ERROR_GC_DATA_UTILS_START_TIMESTAMP_TYPE_INVALID} If the start timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_END_TIMESTAMP_TYPE_INVALID} If the end timestamp argument is not a Date object.
 	 * @throws {ERROR_GC_DATA_UTILS_INTERVAL_MISMATCH} If the start timestamp is not earlier than the end timestamp.
@@ -936,13 +936,13 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Changes the internal state of the Genesys Cloud data utilities instance.
-	 * @param {symbol} newState - The new state of the Genesys Cloud data utilities instance.
-	 * @throws {ERROR_GC_DATA_UTILS_INTERNAL_ERROR} If the new state parameter is not a valid Genesys Cloud data utilities state.
+	 * Changes the internal state of the Genesys Cloud Data Utilities instance.
+	 * @param {symbol} newState - The new state of the Genesys Cloud Data Utilities instance.
+	 * @throws {ERROR_GC_DATA_UTILS_INTERNAL_ERROR} If the new state parameter is not a valid Genesys Cloud Data Utilities state.
 	 */
 	#changeState(newState) {
 		if (GCDataUtils.#STATES.includes(newState) === false) {
-			throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(`The state ${newState.description} is not a valid Genesys Cloud data utilities state.`);
+			throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(`The state ${newState.description} is not a valid Genesys Cloud Data Utilities state.`);
 		}
 
 		const previousState = this.#clientState;
@@ -969,7 +969,7 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Connects the Genesys Cloud data utilities client.
+	 * Connects the Genesys Cloud Data Utilities client.
 	 * @async
 	 * @returns {Promise<boolean>} A promise that fulfills to true if the client connected.
 	 * @throws {ERROR_GC_DATA_UTILS_ID_NOT_FOUND} If the Genesys Cloud OAuth client ID was not found.
@@ -1003,7 +1003,7 @@ class GCDataUtils {
 	}
 
 	/**
-	 * Closes the Genesys Cloud data utilities client connection.
+	 * Closes the Genesys Cloud Data Utilities client connection.
 	 * @async
 	 * @returns {Promise<boolean>} A promise that fulfills to true if the client is gracefully disconnected.
 	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR} If the Genesys Cloud OAuth access token deletion request returned an unexpected response.

@@ -1,5 +1,5 @@
 /**
- * Genesys Cloud data utilities for Node.js tests.
+ * Genesys Cloud Data Utilities for Node.js tests.
  * @module gc-data-utils-class-tests
  * @license MIT
  * @author Juan F. Abello <juan@jfabello.com>
@@ -40,8 +40,8 @@ beforeAll(() => {
 	realRegion = process.env["GENESYS_CLOUD_REGION"];
 });
 
-describe("Genesys Cloud data utilities for Node.js tests", () => {
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_TYPE_INVALID error when no arguments are passed", () => {
+describe("Genesys Cloud Data Utilities for Node.js tests", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_TYPE_INVALID error when no arguments are passed", () => {
 		expect.assertions(1);
 		try {
 			// @ts-expect-error
@@ -51,7 +51,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_TYPE_INVALID error when a client ID argument that is not a string is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_TYPE_INVALID error when a client ID argument that is not a string is passed", () => {
 		expect.assertions(3);
 		try {
 			// @ts-expect-error
@@ -73,7 +73,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_INVALID_UUID error when a client ID that is not an UUID is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_INVALID_UUID error when a client ID that is not an UUID is passed", () => {
 		expect.assertions(1);
 		try {
 			// @ts-expect-error
@@ -83,7 +83,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_SECRET_TYPE_INVALID error when a client secret argument is not passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_SECRET_TYPE_INVALID error when a client secret argument is not passed", () => {
 		expect.assertions(1);
 		try {
 			// @ts-expect-error
@@ -93,7 +93,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_SECRET_TYPE_INVALID error when a client secret argument that is not a string is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_SECRET_TYPE_INVALID error when a client secret argument that is not a string is passed", () => {
 		expect.assertions(3);
 		try {
 			// @ts-expect-error
@@ -115,7 +115,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_REGION_TYPE_INVALID error when a region argument is not passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_REGION_TYPE_INVALID error when a region argument is not passed", () => {
 		expect.assertions(1);
 		try {
 			// @ts-expect-error
@@ -125,7 +125,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_REGION_TYPE_INVALID error when a region argument that is not a string is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_REGION_TYPE_INVALID error when a region argument that is not a string is passed", () => {
 		expect.assertions(3);
 		try {
 			// @ts-expect-error
@@ -147,7 +147,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_REGION_INVALID error when an invalid region is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_REGION_INVALID error when an invalid region is passed", () => {
 		expect.assertions(1);
 		try {
 			new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, "not-a-region");
@@ -156,7 +156,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_SOCKET_TIMEOUT_TYPE_INVALID when a socket timeout argument that is not an integer is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_SOCKET_TIMEOUT_TYPE_INVALID when a socket timeout argument that is not an integer is passed", () => {
 		expect.assertions(4);
 		try {
 			// @ts-expect-error
@@ -183,7 +183,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_SOCKET_TIMEOUT_OUT_OF_BOUNDS error when a socket timeout argument that is not a positive integer is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_SOCKET_TIMEOUT_OUT_OF_BOUNDS error when a socket timeout argument that is not a positive integer is passed", () => {
 		expect.assertions(2);
 		try {
 			new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION, { socketTimeout: 0 });
@@ -197,7 +197,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_TIME_BETWEEN_REQUESTS_TYPE_INVALID when a time between requests argument that is not an integer is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_TIME_BETWEEN_REQUESTS_TYPE_INVALID when a time between requests argument that is not an integer is passed", () => {
 		expect.assertions(4);
 		try {
 			// @ts-expect-error
@@ -224,7 +224,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_TIME_BETWEEN_REQUESTS_OUT_OF_BOUNDS error when a time between requests argument that is not a positive integer is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_TIME_BETWEEN_REQUESTS_OUT_OF_BOUNDS error when a time between requests argument that is not a positive integer is passed", () => {
 		expect.assertions(2);
 		try {
 			new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION, { timeBetweenRequests: 0 });
@@ -238,7 +238,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_MAX_RETRIES_TYPE_INVALID when a max retries argument that is not an integer is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_MAX_RETRIES_TYPE_INVALID when a max retries argument that is not an integer is passed", () => {
 		expect.assertions(4);
 		try {
 			// @ts-expect-error
@@ -265,7 +265,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_MAX_RETRIES_OUT_OF_BOUNDS error when a max retries argument that is not a positive integer is passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_MAX_RETRIES_OUT_OF_BOUNDS error when a max retries argument that is not a positive integer is passed", () => {
 		expect.assertions(2);
 		try {
 			new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION, { maxRetries: 0 });
@@ -279,14 +279,14 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("An attempt to create a Genesys Cloud data utilities instance must return a new instance with its state set to CREATED state when valid arguments are passed", () => {
+	test("An attempt to create a Genesys Cloud Data Utilities instance must return a new instance with its state set to CREATED state when valid arguments are passed", () => {
 		expect.assertions(2);
 		const gcDataUtils = new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION);
 		expect(gcDataUtils).toBeInstanceOf(GCDataUtils);
 		expect(gcDataUtils.state).toBe(GCDataUtils.CREATED);
 	});
 
-	test("A call to the connect(...) method of a Genesys Cloud data utilities instance must return a Promise object and set the instance state to CONNECTING when the instance is in the CREATED state", async () => {
+	test("A call to the connect(...) method of a Genesys Cloud Data Utilities instance must return a Promise object and set the instance state to CONNECTING when the instance is in the CREATED state", async () => {
 		expect.assertions(3);
 		const gcDataUtils = new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION);
 		expect(gcDataUtils.state).toBe(GCDataUtils.CREATED);
@@ -300,7 +300,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("A second call to the connect(...) method of a Genesys Cloud data utilities instance must return the same Promise object that was returned in the first call", async () => {
+	test("A second call to the connect(...) method of a Genesys Cloud Data Utilities instance must return the same Promise object that was returned in the first call", async () => {
 		expect.assertions(1);
 		const gcDataUtils = new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION);
 		const gcDataUtilsConnectPromise = gcDataUtils.connect();
@@ -312,7 +312,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("A call to the connect(...) method of a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CONNECT_UNAVAILABLE error when the client is not in a state that allows it to connect to Genesys Cloud", async () => {
+	test("A call to the connect(...) method of a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CONNECT_UNAVAILABLE error when the client is not in a state that allows it to connect to Genesys Cloud", async () => {
 		expect.assertions(8);
 		let gcDataUtils = null;
 		let gcDataUtilsConnectPromise = null;
@@ -358,7 +358,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("A call to the connect(...) method of a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_NOT_FOUND error and set the instance state to FAILED when the Genesys Cloud client ID is not an ID for the region", async () => {
+	test("A call to the connect(...) method of a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_ID_NOT_FOUND error and set the instance state to FAILED when the Genesys Cloud client ID is not an ID for the region", async () => {
 		expect.assertions(2);
 		const gcDataUtils = new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION);
 		const gcDataUtilsConnectPromise = gcDataUtils.connect();
@@ -370,7 +370,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("A call to the connect(...) method of a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_AUTHENTICATION_FAILURE error and set the instance state to FAILED when the Genesys Cloud client secret is incorrect for a valid client ID for the region", async () => {
+	test("A call to the connect(...) method of a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_AUTHENTICATION_FAILURE error and set the instance state to FAILED when the Genesys Cloud client secret is incorrect for a valid client ID for the region", async () => {
 		expect.assertions(2);
 		const gcDataUtils = new GCDataUtils(realClientId, DUMMY_CLIENT_SECRET, realRegion);
 		const gcDataUtilsConnectPromise = gcDataUtils.connect();
@@ -382,7 +382,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("A call to the connect(...) method of a Genesys Cloud data utilities instance must return true and set the instance state to CONNECTED when the Genesys Cloud client ID and secret are valid for the region", async () => {
+	test("A call to the connect(...) method of a Genesys Cloud Data Utilities instance must return true and set the instance state to CONNECTED when the Genesys Cloud client ID and secret are valid for the region", async () => {
 		expect.assertions(2);
 		const gcDataUtils = new GCDataUtils(realClientId, realClientSecret, realRegion);
 		const gcDataUtilsConnectPromise = gcDataUtils.connect();
@@ -395,7 +395,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		await gcDataUtilsClosePromise;
 	});
 
-	test("A call to the close(...) method of a Genesys Cloud data utilities instance must return a Promise object and set the instance state to CLOSING when the instance is in the CONNECTED state", async () => {
+	test("A call to the close(...) method of a Genesys Cloud Data Utilities instance must return a Promise object and set the instance state to CLOSING when the instance is in the CONNECTED state", async () => {
 		expect.assertions(3);
 		const gcDataUtils = new GCDataUtils(realClientId, realClientSecret, realRegion);
 		const gcDataUtilsConnectPromise = gcDataUtils.connect();
@@ -410,7 +410,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		await gcDataUtilsClosePromise;
 	});
 
-	test("A second call to the close(...) method of a Genesys Cloud data utilities instance must return the same Promise object that was returned in the first call", async () => {
+	test("A second call to the close(...) method of a Genesys Cloud Data Utilities instance must return the same Promise object that was returned in the first call", async () => {
 		expect.assertions(1);
 		const gcDataUtils = new GCDataUtils(realClientId, realClientSecret, realRegion);
 		const gcDataUtilsConnectPromise = gcDataUtils.connect();
@@ -423,7 +423,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		await gcDataUtilsClosePromise;
 	});
 
-	test("A call to the close(...) method of a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLOSE_UNAVAILABLE error when the client is not in a state that allows its closing", async () => {
+	test("A call to the close(...) method of a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLOSE_UNAVAILABLE error when the client is not in a state that allows its closing", async () => {
 		expect.assertions(4);
 		let gcDataUtils = null;
 		let gcDataUtilsConnectPromise = null;
@@ -449,7 +449,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 		}
 	});
 
-	test("A call to the close(...) method of a Genesys Cloud data utilities instance must return true and set the instance state to CLOSED when the instance is in the CONNECTED state", async () => {
+	test("A call to the close(...) method of a Genesys Cloud Data Utilities instance must return true and set the instance state to CLOSED when the instance is in the CONNECTED state", async () => {
 		expect.assertions(3);
 		const gcDataUtils = new GCDataUtils(realClientId, realClientSecret, realRegion);
 		const gcDataUtilsConnectPromise = gcDataUtils.connect();
@@ -463,7 +463,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 
 		expect(gcDataUtils.state).toBe(GCDataUtils.CLOSED);
 	});
-	test("A call to the getAllUsers(...) method of a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED errors when the instance is not in the CONNECTED state", async () => {
+	test("A call to the getAllUsers(...) method of a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED errors when the instance is not in the CONNECTED state", async () => {
 		expect.assertions(1);
 		const gcDataUtils = new GCDataUtils(DUMMY_CLIENT_ID, DUMMY_CLIENT_SECRET, DUMMY_REGION);
 		try {
@@ -474,7 +474,7 @@ describe("Genesys Cloud data utilities for Node.js tests", () => {
 			expect(error).toBeInstanceOf(GCDataUtils.errors.ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED);
 		}
 	});
-	test("A call to the getAllUsers(...) method of a Genesys Cloud data utilities instance must throw an ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID error when the page size argument is not a positive integer", async () => {
+	test("A call to the getAllUsers(...) method of a Genesys Cloud Data Utilities instance must throw an ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID error when the page size argument is not a positive integer", async () => {
 		expect.assertions(4);
 		const gcDataUtils = new GCDataUtils(realClientId, realClientSecret, realRegion);
 		await gcDataUtils.connect();

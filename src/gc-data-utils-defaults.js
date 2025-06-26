@@ -1,5 +1,5 @@
 /**
- * Genesys Cloud data utilities for Node.js defaults.
+ * Genesys Cloud Data Utilities for Node.js defaults.
  * @module gc-data-utils-defaults
  * @license MIT
  * @author Juan F. Abello <juan@jfabello.com>
