@@ -26,7 +26,7 @@
 		"test": "node --experimental-vm-modules ./node_modules/.bin/jest --watchAll --coverage"
 	},
 	"dependencies": {
-		"@jfabello/gc-platform-api-client": "^0.1.0",
+		"@jfabello/gc-platform-api-client": "^0.2.0",
 		"@jfabello/simple-timer": "^3.0.0"
 	},
 	"devDependencies": {
