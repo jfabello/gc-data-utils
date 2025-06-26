@@ -255,6 +255,40 @@ class GCDataUtils {
 	}
 
 	/**
+	 * Connects the Genesys Cloud Data Utilities client.
+	 * @async
+	 * @returns {Promise<boolean>} A promise that fulfills to true if the client connected.
+	 * @throws {ERROR_GC_DATA_UTILS_ID_NOT_FOUND} If the Genesys Cloud OAuth client ID was not found.
+	 * @throws {ERROR_GC_DATA_UTILS_AUTHENTICATION_FAILURE} If the Genesys Cloud OAuth authentication failed.
+	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR} If the Genesys Cloud OAuth access token request returned an unexpected response.
+	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE} If the Genesys Cloud OAuth access token request returned an unexpected HTTP status code.
+	 * @throws {ERROR_GC_DATA_UTILS_INTERNAL_ERROR} If an internal error occurred while connecting the client.
+	 * @throws Errors thrown by the makeRequest() method of the HTTP client class.
+	 */
+	async #connect() {
+		// Connect the Genesys Cloud Platform API client
+		try {
+			await this.#gcPlatformAPIClient.connect();
+		} catch (error) {
+			this.#changeState(GCDataUtils.#FAILED);
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_ID_NOT_FOUND) throw new errors.ERROR_GC_DATA_UTILS_CLIENT_ID_NOT_FOUND();
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_AUTHENTICATION_FAILURE) throw new errors.ERROR_GC_DATA_UTILS_AUTHENTICATION_FAILURE();
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_RESPONSE_ERROR) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR(error.responseError);
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_STATUS_CODE) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE(error.statusCode);
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_INTERNAL_ERROR) throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.extendedMessage, error.extendedError);
+			else throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.message, error);
+		}
+
+		// Set the client state to CONNECTED
+		this.#changeState(GCDataUtils.#CONNECTED);
+
+		// Remove the connect promise
+		this.#connectPromise = null;
+
+		return true;
+	}
+
+	/**
 	 * Closes the Genesys Cloud Data Utilities client connection.
 	 * @async
 	 * @returns {Promise<boolean>} A promise that fulfills to true if the client is gracefully disconnected.
@@ -281,6 +315,37 @@ class GCDataUtils {
 		this.#closePromise = this.#close();
 
 		return this.#closePromise;
+	}
+
+	/**
+	 * Closes the Genesys Cloud Data Utilities client connection.
+	 * @async
+	 * @returns {Promise<boolean>} A promise that fulfills to true if the client is gracefully disconnected.
+	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR} If the Genesys Cloud OAuth access token deletion request returned an unexpected response.
+	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE} If the Genesys Cloud OAuth access token deletion request returned an unexpected HTTP status code.
+ 	 * @throws {ERROR_GC_DATA_UTILS_INTERNAL_ERROR} If an internal error occurred while closing the client.
+
+	 * @throws Errors thrown by the makeRequest() method of the HTTP client class.
+	 */
+	async #close() {
+		// Close the Genesys Cloud Platform API client
+		try {
+			await this.#gcPlatformAPIClient.close(false); // Sets the clearBacklog argument to false.
+		} catch (error) {
+			this.#changeState(GCDataUtils.#FAILED);
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_RESPONSE_ERROR) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR(error.responseError);
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_STATUS_CODE) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE(error.statusCode);
+			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_INTERNAL_ERROR) throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.extendedMessage, error.extendedError);
+			else throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.message, error);
+		}
+
+		// Set the client state to CLOSED
+		this.#changeState(GCDataUtils.#CLOSED);
+
+		// Remove all event listeners to avoid memory leaks
+		this.#internalEventEmitter.removeAllListeners();
+
+		return true;
 	}
 
 	/**
@@ -964,71 +1029,6 @@ class GCDataUtils {
 		if (typeof eventData !== "object") return false;
 
 		this.#internalEventEmitter.emit(eventName, Object.assign({ eventDate: new Date() }, eventData));
-
-		return true;
-	}
-
-	/**
-	 * Connects the Genesys Cloud Data Utilities client.
-	 * @async
-	 * @returns {Promise<boolean>} A promise that fulfills to true if the client connected.
-	 * @throws {ERROR_GC_DATA_UTILS_ID_NOT_FOUND} If the Genesys Cloud OAuth client ID was not found.
-	 * @throws {ERROR_GC_DATA_UTILS_AUTHENTICATION_FAILURE} If the Genesys Cloud OAuth authentication failed.
-	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR} If the Genesys Cloud OAuth access token request returned an unexpected response.
-	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE} If the Genesys Cloud OAuth access token request returned an unexpected HTTP status code.
-	 * @throws {ERROR_GC_DATA_UTILS_INTERNAL_ERROR} If an internal error occurred while connecting the client.
-	 * @throws Errors thrown by the makeRequest() method of the HTTP client class.
-	 */
-	async #connect() {
-		// Connect the Genesys Cloud Platform API client
-		try {
-			await this.#gcPlatformAPIClient.connect();
-		} catch (error) {
-			this.#changeState(GCDataUtils.#FAILED);
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_ID_NOT_FOUND) throw new errors.ERROR_GC_DATA_UTILS_CLIENT_ID_NOT_FOUND();
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_AUTHENTICATION_FAILURE) throw new errors.ERROR_GC_DATA_UTILS_AUTHENTICATION_FAILURE();
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_RESPONSE_ERROR) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR(error.responseError);
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_STATUS_CODE) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE(error.statusCode);
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_INTERNAL_ERROR) throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.extendedMessage, error.extendedError);
-			else throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.message, error);
-		}
-
-		// Set the client state to CONNECTED
-		this.#changeState(GCDataUtils.#CONNECTED);
-
-		// Remove the connect promise
-		this.#connectPromise = null;
-
-		return true;
-	}
-
-	/**
-	 * Closes the Genesys Cloud Data Utilities client connection.
-	 * @async
-	 * @returns {Promise<boolean>} A promise that fulfills to true if the client is gracefully disconnected.
-	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR} If the Genesys Cloud OAuth access token deletion request returned an unexpected response.
-	 * @throws {ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE} If the Genesys Cloud OAuth access token deletion request returned an unexpected HTTP status code.
- 	 * @throws {ERROR_GC_DATA_UTILS_INTERNAL_ERROR} If an internal error occurred while closing the client.
-
-	 * @throws Errors thrown by the makeRequest() method of the HTTP client class.
-	 */
-	async #close() {
-		// Close the Genesys Cloud Platform API client
-		try {
-			await this.#gcPlatformAPIClient.close(false); // Sets the clearBacklog argument to false.
-		} catch (error) {
-			this.#changeState(GCDataUtils.#FAILED);
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_RESPONSE_ERROR) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR(error.responseError);
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_UNEXPECTED_STATUS_CODE) throw new errors.ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE(error.statusCode);
-			if (error instanceof GCPlatformAPIClient.errors.ERROR_GC_PLATFORM_API_CLIENT_INTERNAL_ERROR) throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.extendedMessage, error.extendedError);
-			else throw new errors.ERROR_GC_DATA_UTILS_INTERNAL_ERROR(error.message, error);
-		}
-
-		// Set the client state to CLOSED
-		this.#changeState(GCDataUtils.#CLOSED);
-
-		// Remove all event listeners to avoid memory leaks
-		this.#internalEventEmitter.removeAllListeners();
 
 		return true;
 	}
