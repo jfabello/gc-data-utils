@@ -23,6 +23,7 @@
 		"url": "https://github.com/jfabello/gc-data-utils.git"
 	},
 	"scripts": {
+		"lint": "eslint \"**/*.js\"",
 		"test": "node --experimental-vm-modules ./node_modules/.bin/jest --watchAll --coverage"
 	},
 	"dependencies": {
