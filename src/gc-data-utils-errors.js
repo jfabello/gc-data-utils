@@ -349,6 +349,21 @@ class ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS extends RangeError {
 }
 
 /**
+ * Thrown when the provided event emitter is not a valid EventEmitter instance.
+ * @class ERROR_GC_DATA_UTILS_EVENT_EMITTER_TYPE_INVALID
+ * @extends Error
+ */
+class ERROR_GC_DATA_UTILS_EVENT_EMITTER_TYPE_INVALID extends Error {
+	/**
+	 * @constructor
+	 */
+	constructor() {
+		super("The provided event emitter is not a valid EventEmitter instance.");
+		this.name = "ERROR_GC_DATA_UTILS_EVENT_EMITTER_TYPE_INVALID";
+	}
+}
+
+/**
  * Thrown when the queue ID type is not valid.
  * @class ERROR_GC_DATA_UTILS_QUEUE_ID_TYPE_INVALID
  * @extends TypeError
@@ -668,6 +683,7 @@ const errors = {
 	ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED,
 	ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID,
 	ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS,
+	ERROR_GC_DATA_UTILS_EVENT_EMITTER_TYPE_INVALID,
 	ERROR_GC_DATA_UTILS_QUEUE_ID_TYPE_INVALID,
 	ERROR_GC_DATA_UTILS_QUEUE_ID_INVALID_UUID,
 	ERROR_GC_DATA_UTILS_START_TIMESTAMP_TYPE_INVALID,
