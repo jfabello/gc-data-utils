@@ -59,3 +59,5 @@ declare class GCDataUtils {
 		}
 	): AsyncGenerator<object, void, unknown>;
 }
+
+export default GCDataUtils;
