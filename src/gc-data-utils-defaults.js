@@ -14,6 +14,7 @@ defaults.SOCKET_TIMEOUT = 60 * 1000; // 60 seconds
 defaults.TIME_BETWEEN_REQUESTS = 200; // 200 miliseconds => 5 requests per second.
 defaults.MAX_RETRIES = 5;
 defaults.GET_USERS_PAGE_SIZE = 100;
+defaults.GET_GROUPS_PAGE_SIZE = 100;
 defaults.GET_QUEUES_PAGE_SIZE = 100;
 defaults.GET_QUEUE_MEMBERS_PAGE_SIZE = 100;
 defaults.DATALAKE_PAGE_SIZE = 2000;

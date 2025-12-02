@@ -28,6 +28,7 @@ declare class GCDataUtils {
 	connect(): Promise<boolean>;
 	close(): Promise<boolean>;
 	getAllUsers(options?: { pageSize?: number }): AsyncGenerator<object, void, unknown>;
+	getAllGroups(options?: { pageSize?: number }): AsyncGenerator<object, void, unknown>;
 	getAllQueues(options?: { pageSize?: number }): AsyncGenerator<object, void, unknown>;
 	getQueueMembers(queueId: string, options?: { pageSize?: number }): AsyncGenerator<object, void, unknown>;
 	getConversationsDatalakeAvailabilityTimestamp(): Promise<Date>;

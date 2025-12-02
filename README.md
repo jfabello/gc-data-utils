@@ -12,6 +12,7 @@ The Genesys Cloud Data Utilities for Node.js is an easy-to-use toolbox to extrac
 ## Table of Contents
 
 - [What is New](#what-is-new)
+  - [Version 0.2.1](#version-021)
   - [Version 0.1.0](#version-010)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -26,6 +27,7 @@ The Genesys Cloud Data Utilities for Node.js is an easy-to-use toolbox to extrac
     - [`connect()`](#connect)
     - [`close()`](#close)
     - [`getAllUsers()`](#getallusers)
+    - [`getAllGroups()`](#getallgroups)
     - [`getAllQueues()`](#getallqueues)
     - [`getQueueMembers()`](#getqueuemembers)
     - [`getConversationsDatalakeAvailabilityTimestamp()`](#getconversationsdatalakeavailabilitytimestamp)
@@ -40,6 +42,10 @@ The Genesys Cloud Data Utilities for Node.js is an easy-to-use toolbox to extrac
 - [License](#license)
 
 ## What is New
+
+### Version 0.2.1
+
+- Added the `getAllGroups()` method.
 
 ### Version 0.1.0
 
@@ -66,7 +72,7 @@ import { GCDataUtils } from "@jfabello/gc-data-utils";
 
 // This is just for demonstration purposes, never hardcode your credentials
 const gcClientId = "f6eb9da0-4590-4bb7-82a0-f85afbfa1070";
-const gcClientSecret ="pHe8l6Ro4raxeph13etrujufri9ecl5lwr0hlCrO-jQ";
+const gcClientSecret = "pHe8l6Ro4raxeph13etrujufri9ecl5lwr0hlCrO-jQ";
 const gcRegion = "us-east-1";
 
 // Create a new GCDataUtils instance
@@ -98,7 +104,7 @@ import { GCDataUtils } from "@jfabello/gc-data-utils";
 
 // This is just for demonstration purposes, never hardcode your credentials
 const gcClientId = "f6eb9da0-4590-4bb7-82a0-f85afbfa1070";
-const gcClientSecret ="pHe8l6Ro4raxeph13etrujufri9ecl5lwr0hlCrO-jQ";
+const gcClientSecret = "pHe8l6Ro4raxeph13etrujufri9ecl5lwr0hlCrO-jQ";
 const gcRegion = "us-east-1";
 
 // Create a new GCDataUtils instance
@@ -221,6 +227,26 @@ A promise that fulfills to `true` if the client is gracefully disconnected.
 - `ERROR_GC_DATA_UTILS_UNEXPECTED_RESPONSE_ERROR`: If the Genesys Cloud OAuth access token deletion request returns an unexpected response.
 - `ERROR_GC_DATA_UTILS_UNEXPECTED_STATUS_CODE`: If the Genesys Cloud OAuth access token deletion request returns an unexpected HTTP status code.
 - `ERROR_GC_DATA_UTILS_INTERNAL_ERROR`: If an internal error occurs while closing the client connection.
+
+#### `getAllGroups()`
+
+Fetches all groups, including inactive and deleted groups.
+
+##### Parameters
+
+- `options` (object): The options object.
+  - `pageSize` (number): The number of groups to return per page (default: 100).
+
+##### Returns
+
+An async generator that yields the groups.
+
+##### Throws
+
+- `ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED`: If the client is not connected.
+- `ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID`: If the page size option is not a number.
+- `ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS`: If the page size option is not a positive integer.
+- `ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE`: If the response is missing a required property or there is a property type mismatch.
 
 #### `getAllUsers()`
 

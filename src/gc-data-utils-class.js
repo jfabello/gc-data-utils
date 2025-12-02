@@ -393,6 +393,50 @@ class GCDataUtils {
 	}
 
 	/**
+	 * Get all the groups, including inactive and deleted groups.
+	 * @async
+	 * @param {object} options - The options object.
+	 * @param {number} [options.pageSize=100] - The number of groups to return per page.
+	 * @returns {AsyncGenerator<object>} An async generator that yields the groups.
+	 * @throws {ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED} If the Genesys Cloud Data Utilities client is not connected.
+	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID} If the page size option is not a number.
+	 * @throws {ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS} If the page size option is not a positive integer.
+	 * @throws {ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE} If the response is missing a required property or there is a property type mismatch.
+	 */
+	async *getAllGroups({ pageSize = defaults.GET_GROUPS_PAGE_SIZE } = {}) {
+		// Check the client state
+		if (this.#clientState !== GCDataUtils.#CONNECTED) {
+			throw new errors.ERROR_GC_DATA_UTILS_CLIENT_NOT_CONNECTED();
+		}
+
+		// Check the page size option
+		if (typeof pageSize !== "number" || Number.isInteger(pageSize) === false) {
+			throw new errors.ERROR_GC_DATA_UTILS_PAGE_SIZE_TYPE_INVALID();
+		}
+
+		if (pageSize < 1) {
+			throw new errors.ERROR_GC_DATA_UTILS_PAGE_SIZE_OUT_OF_BOUNDS();
+		}
+
+		let currentPage = 0;
+		let pageCount = 0;
+
+		do {
+			currentPage++;
+			const getGroupsResult = await this.#gcPlatformAPIClient.GroupsAPI.getGroups({ pageNumber: currentPage, pageSize: pageSize });
+
+			if ("body" in getGroupsResult === false) throw new errors.ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE('The response is missing the "body" property.');
+			if ("entities" in getGroupsResult.body === false) throw new errors.ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE('The response body is missing the "entities" property.');
+			if (Array.isArray(getGroupsResult.body.entities) === false) throw new errors.ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE('The response body "entities" property is not an array.');
+			if ("pageCount" in getGroupsResult.body === false) throw new errors.ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE('The response body is missing the "pageCount" property.');
+			if (typeof getGroupsResult.body.pageCount !== "number") throw new errors.ERROR_GC_DATA_UTILS_INCOMPLETE_RESPONSE('The response body "pageCount" property is not a number.');
+
+			yield getGroupsResult.body.entities;
+			pageCount = getGroupsResult.body.pageCount;
+		} while (currentPage < pageCount);
+	}
+
+	/**
 	 * Get all the queues.
 	 * @async
 	 * @param {object} options - The options object.
